@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UCID Form</title>
+
+    <script>
+        function checkUCID() {
+
+            var ucid = document.getElementById("ucid").value;
+
+            // Regular expression: letters followed by 0 to 3 digits
+            var pattern = /^[A-Za-z]+[0-9]{0,3}$/;
+
+            // List of valid UCIDs (create your own list)
+            var validList = ["abc123", "john1", "maura", "student99"];
+
+            // Check format
+            if (!pattern.test(ucid)) {
+                alert("UCID DOES NOT CONFORM TO VALID FORMAT");
+            }
+            else {
+                // Format is valid, now check if it's in the list
+                if (validList.indexOf(ucid) != -1) {
+                    alert("VALID UCID FORMAT AND UCID FOUND");
+                }
+                else {
+                    alert("VALID UCID FORMAT BUT INVALID UCID");
+                }
+            }
+
+            return false; // stops form from submitting
+        }
+    </script>
+</head>
+
+<body>
+
+<h2>UCID Validation Form</h2>
+
+<form onsubmit="return checkUCID();">
+
+    <input 
+        type="text"
+        id="ucid"
+        name="ucid"
+        placeholder="Enter UCID"
+        title="Letters followed by 0 to 3 digits"
+    >
+
+    <br><br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>
